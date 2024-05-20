@@ -9,6 +9,6 @@ export default defineConfig({
     strictPort: true
   },
   build: {
-    outDir: './build'
+    "build": "[my-framework] build --output public"
   }
 })
