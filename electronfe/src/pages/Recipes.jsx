@@ -56,7 +56,7 @@ const Recipes = () => {
         .post(`https://electron-recipe.onrender.com/recipe/post`, { ...formdata })
         .then((res) => {
           console.log(res.data);
-          setRecipes([...formdata, res.data]);
+          setRecipes([...recipes, res.data]);
         })
         .catch((er) => {
           console.log(er);
