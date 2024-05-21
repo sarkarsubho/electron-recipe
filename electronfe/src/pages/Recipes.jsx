@@ -57,6 +57,7 @@ const Recipes = () => {
         .then((res) => {
           console.log(res.data);
           setRecipes([...recipes, res.data]);
+          
         })
         .catch((er) => {
           console.log(er);
