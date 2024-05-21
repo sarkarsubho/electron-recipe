@@ -8,7 +8,7 @@ const AuthContextProvider = ({ children }) => {
   const [auth, setAuth] = useState( localStorage.getItem("token") || null);
 
   const login = async (email, password) => {
-    const response = await axios.post("http://localhost:8080/login", {
+    const response = await axios.post("https://electron-recipe.onrender.com/login", {
       email,
       password,
     });
@@ -18,7 +18,7 @@ const AuthContextProvider = ({ children }) => {
 
   const signup = async (name, email, password) => {
     await axios
-      .post("http://localhost:8080/signup", { name, email, password })
+      .post("https://electron-recipe.onrender.com/signup", { name, email, password })
       .then((response) => {
         setAuth(response.data.token);
         localStorage.setItem("token", response.data.token);

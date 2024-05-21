@@ -20,7 +20,9 @@ const Recipes = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/recipe");
+      const response = await fetch(
+        "https://electron-recipe.onrender.com/recipe"
+      );
       const data = await response.json();
       setRecipes(data);
     };
@@ -29,15 +31,13 @@ const Recipes = () => {
   }, []);
 
   const handleEdit = async (recipe) => {
-    // Implement edit functionality here
     console.log(recipe);
     setFormAction("edit");
     setFormData(recipe);
-    // axios.patch(`http://localhost:8080/recipe/${id}`,{selectedRecipe})
   };
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:8080/recipe/${id}`, {
+    const response = await fetch(`https://electron-recipe.onrender.com/recipe/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const Recipes = () => {
     e.preventDefault();
     if (formAction === "new") {
       axios
-        .post(`http://localhost:8080/recipe/post`, { ...formdata })
+        .post(`https://electron-recipe.onrender.com/recipe/post`, { ...formdata })
         .then((res) => {
           console.log(res.data);
           setRecipes([...formdata, res.data]);
@@ -67,7 +67,7 @@ const Recipes = () => {
         });
     } else {
       axios
-        .patch(`http://localhost:8080/recipe/${formdata._id}`, { ...formdata })
+        .patch(`https://electron-recipe.onrender.com/recipe/${formdata._id}`, { ...formdata })
         .then((res) => {
           console.log(res.data);
           setRecipes(
